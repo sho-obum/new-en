@@ -6,7 +6,7 @@ import "firebase/compat/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyChMLqcHh1ipStdk2BtDAFpKv_dwJqxQ9o",
   authDomain: "mainenactus.firebaseapp.com",
-  // dburl
+  databaseURL: "https://mainenactus-default-rtdb.firebaseio.com",
   projectId: "mainenactus",
   storageBucket: "mainenactus.appspot.com",
   messagingSenderId: "125969543197",

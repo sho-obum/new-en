@@ -1,27 +1,7 @@
 import React, { useState } from "react";
 import "./Ticket.css";
 import { fs } from "../config/config";
-import cardImg from "../assets/card-img.jpeg";
-import FForange from "../assets/FFora.png";
 
-const inputs = document.querySelectorAll(".input");
-
-function addcl() {
-  let parent = this.parentNode.parentNode;
-  parent.classList.add("focus");
-}
-
-function remcl() {
-  let parent = this.parentNode.parentNode;
-  if (this.value == "") {
-    parent.classList.remove("focus");
-  }
-}
-
-inputs.forEach((input) => {
-  input.addEventListener("focus", addcl);
-  input.addEventListener("blur", remcl);
-});
 const Ticket = () => {
   function handleTicketChange(event) {
     setTicket(event.target.value);
@@ -39,34 +19,16 @@ const Ticket = () => {
 
   let total = ticket * quantity;
   const cart = fs.collection("contacts");
+  console.log(name);
+  console.log(email);
+  console.log(phno);
+  console.log(ticket);
+  console.log(quantity);
+  console.log(paymentid);
 
-  const sendData = () => {
-    localStorage.setItem("Phone", phno);
-    localStorage.setItem("Email", email);
-    cart
-      .doc(`${name} ${phno}`)
-      .set({
-        name: name,
-        email: email,
-        phone_number: phno,
-        ticket: ticket,
-        quantity: quantity,
-        // paymentid: paymentid,
-      })
-      .then(() => {
-        alert("Your message has been submitted👍");
-        console.log("heXre");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+  // const sendData = () => {
 
-    setName("");
-    setEmail("");
-    setTicket("");
-    setQuantity("");
-    setphno("");
-  };
+  // };
 
   const loadScript = (src) => {
     return new Promise((resovle) => {
@@ -84,14 +46,15 @@ const Ticket = () => {
       document.body.appendChild(script);
     });
   };
-
+  var uid = new Date().getTime().toString(36);
+  console.log(uid);
   const displayRazorpay = async (amount) => {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
 
     if (!res) {
-      alert("You are offline... Failed to load Razorpay SDK");
+      alert("You are offline... Please turn on your network");
       return;
     }
     console.log(amount);
@@ -102,20 +65,46 @@ const Ticket = () => {
       amount: amount * 100,
       name: "Enactus IITM",
       description: "Fall Fest",
+
       handler: function (response) {
         setpaymentid(response.razorpay_payment_id);
         console.log(response);
         alert("Payment Successfully");
         localStorage.setItem("paymentdone", true);
-        if (total) {
+        if (localStorage.getItem("paymentdone") === "true") {
+          localStorage.setItem("PhoneNumber", phno);
+          localStorage.setItem("EmailOfUser", email);
+          let userdata = {};
+          var uid = new Date().getTime().toString(36);
+          userdata["name"] = name;
+          userdata["email"] = email;
+          userdata["phone_number"] = phno;
+          userdata["ticket"] = ticket;
+          userdata["quantity"] = quantity;
+          userdata["uid"] = uid;
+          console.log(userdata);
+
+          fs.collection("contacts")
+            .doc(name, uid)
+            .set(userdata)
+            .then(() => {
+              alert("Your message has been submitted👍");
+              console.log("heXre");
+            })
+            .catch((error) => {
+              alert(error.message);
+            });
+
+          setName("");
+          setEmail("");
+          setTicket("");
+          setQuantity("");
+          setphno("");
           localStorage.setItem("paymentdone", false);
           console.log(localStorage.getItem("paymentdone"));
         } else {
           console.log(localStorage.getItem("paymentdone"), ": payment done");
-          console.log(amount);
-          localStorage.getItem("paymentdone") === "true"
-            ? sendData()
-            : console.log("paymentnotdone");
+          console.log("data not sent");
           localStorage.setItem("paymentdone", false);
           console.log(localStorage.getItem("paymentdone"));
         }
@@ -132,9 +121,9 @@ const Ticket = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const price = 1;
+    const price = total;
     console.log(price);
-    displayRazorpay(price);
+    displayRazorpay(total);
   };
 
   return (
@@ -149,14 +138,20 @@ const Ticket = () => {
         </div>
         <div className="login-content">
           <form onSubmit={handleSubmit}>
-            <img src={FForange} />
+            {/* <img src={FForange} /> */}
             <h2 className="title">Book 'EM Bifkre</h2>
             <div className="input-div one">
               <div className="i">
                 <i className="fas fa-user" />
               </div>
               <div className="div">
-                <input type="text" className="input" placeholder="Full Name" />
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
             </div>
             <div className="input-div pass">
@@ -164,7 +159,13 @@ const Ticket = () => {
                 <i className="fas fa-lock" />
               </div>
               <div className="div">
-                <input type="email" className="input" placeholder="Email" />
+                <input
+                  type="email"
+                  className="input"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
             </div>
             <div className="input-div pass">
@@ -176,6 +177,8 @@ const Ticket = () => {
                   type="number"
                   className="input"
                   placeholder="Phone Number"
+                  value={phno}
+                  onChange={(e) => setphno(e.target.value)}
                 />
               </div>
             </div>
