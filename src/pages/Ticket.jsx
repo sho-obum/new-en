@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Ticket.css";
 import { fs } from "../config/config";
+import waveOr from "../assets/wave.png";
+import FForange from "../assets/FFora.png";
 
 const Ticket = () => {
   function handleTicketChange(event) {
@@ -60,7 +62,7 @@ const Ticket = () => {
     console.log(amount);
 
     const options = {
-      key: "rzp_live_G32ZAvGvUcvt5J",
+      key: "rzp_live_K8NjZJ4ZufQuho",
       currency: "INR",
       amount: amount * 100,
       name: "Enactus IITM",
@@ -123,23 +125,20 @@ const Ticket = () => {
     e.preventDefault();
     const price = total;
     console.log(price);
-    displayRazorpay(total);
+    displayRazorpay(price);
   };
 
   return (
     <>
-      <img
-        className="wave"
-        src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png"
-      />
+      <img className="wave" src={waveOr} />
       <div className="container">
         <div className="img">
           <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg" />
         </div>
         <div className="login-content">
           <form onSubmit={handleSubmit}>
-            {/* <img src={FForange} /> */}
-            <h2 className="title">Book 'EM Bifkre</h2>
+            <img src={FForange} className="ffo" />
+            <h2 className="title">Book 'EM Bifkar</h2>
             <div className="input-div one">
               <div className="i">
                 <i className="fas fa-user" />
@@ -211,7 +210,7 @@ const Ticket = () => {
               </div>
             </div>
             <button type="submit" className="btn">
-              Place Order
+              BUY NOW
             </button>
           </form>
         </div>

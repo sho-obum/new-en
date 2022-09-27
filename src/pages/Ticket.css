@@ -8,6 +8,7 @@
 body {
   font-family: "Poppins", sans-serif;
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 .wave {
@@ -32,7 +33,10 @@ body {
   justify-content: flex-end;
   align-items: center;
 }
-
+.ffo {
+  scale: 0.8;
+  /* border: 1px solid red; */
+}
 .login-content {
   display: flex;
   justify-content: flex-start;
@@ -106,7 +110,7 @@ form {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #4f26e4;
+  background-color: #e45826;
   transition: 0.4s;
 }
 
