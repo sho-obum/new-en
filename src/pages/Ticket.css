@@ -7,8 +7,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  overflow: hidden;
-  overflow-x: hidden;
+  /* overflow: hidden; */
 }
 
 .wave {
@@ -25,10 +24,17 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 7rem;
-  padding: 0 2rem;
+  padding: 0 1rem;
+  overflow-x: hidden;
 }
 
 .img {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  scale: 0.7;
+}
+.img-2 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -241,4 +247,9 @@ option {
   .login-content {
     justify-content: center;
   }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

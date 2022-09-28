@@ -3,6 +3,8 @@ import "./Ticket.css";
 import { fs } from "../config/config";
 import waveOr from "../assets/wave.png";
 import FForange from "../assets/FFora.png";
+import WebIllus from "../assets/Web_Illus_2.png";
+import { Link } from "react-router-dom";
 
 const Ticket = () => {
   function handleTicketChange(event) {
@@ -27,10 +29,6 @@ const Ticket = () => {
   console.log(ticket);
   console.log(quantity);
   console.log(paymentid);
-
-  // const sendData = () => {
-
-  // };
 
   const loadScript = (src) => {
     return new Promise((resovle) => {
@@ -91,7 +89,7 @@ const Ticket = () => {
             .set(userdata)
             .then(() => {
               alert("Your message has been submitted👍");
-              console.log("heXre");
+              console.log(email);
             })
             .catch((error) => {
               alert(error.message);
@@ -125,20 +123,28 @@ const Ticket = () => {
     e.preventDefault();
     const price = total;
     console.log(price);
-    displayRazorpay(price);
+    displayRazorpay(1);
   };
 
   return (
     <>
       <img className="wave" src={waveOr} />
       <div className="container">
-        <div className="img">
-          <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg" />
-        </div>
+        {/* <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg" /> */}
+        <img src={WebIllus} className="img" />
+
         <div className="login-content">
           <form onSubmit={handleSubmit}>
-            <img src={FForange} className="ffo" />
-            <h2 className="title">Book 'EM Bifkar</h2>
+            <Link
+              to={"/"}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <img src={FForange} className="ffo" />
+            </Link>
+            <h2 className="title">Book 'EM Befikar</h2>
             <div className="input-div one">
               <div className="i">
                 <i className="fas fa-user" />
@@ -188,9 +194,9 @@ const Ticket = () => {
               <div className="div">
                 <select name="ticket" onChange={handleTicketChange}>
                   <option value="0">Select Ticket</option>
-                  <option value="100">Silver</option>
-                  <option value="150">Elite</option>
-                  <option value="200">Diamond</option>
+                  <option value="100">Standard</option>
+                  <option value="150">Premium</option>
+                  <option value="200">Elite</option>
                 </select>
               </div>
             </div>
