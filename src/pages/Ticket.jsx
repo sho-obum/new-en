@@ -8,9 +8,19 @@ import { Link } from "react-router-dom";
 import { send } from "emailjs-com";
 import emailjs from "emailjs-com";
 
+var ticket_name;
 const Ticket = () => {
   function handleTicketChange(event) {
     setTicket(event.target.value);
+    if (event.target.value == 100) {
+      ticket_name = "Standard";
+    } else if (event.target.value == 150) {
+      ticket_name = "Premium";
+    } else {
+      ticket_name = "Elite";
+    }
+
+    console.log(ticket_name);
   }
   function handleQuantityChange(event) {
     setQuantity(event.target.value);
@@ -50,6 +60,7 @@ const Ticket = () => {
   };
   var uid = new Date().getTime().toString(36);
   console.log(uid);
+  console.log(ticket_name);
   const displayRazorpay = async (amount) => {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -104,13 +115,14 @@ const Ticket = () => {
           setphno("");
           localStorage.setItem("paymentdone", false);
           console.log(localStorage.getItem("paymentdone"));
+
           // email
 
           emailjs
             .send(
               "service_eg6yhc4",
               "template_enbe1rw",
-              { name, ticket, quantity, uid, email },
+              { name, ticket_name, quantity, uid, email },
               "aU2UYRfNcfx9sv8Ws"
             )
             .then(
@@ -121,6 +133,7 @@ const Ticket = () => {
                 console.log("FAILED...", error);
               }
             );
+
           // email end
         } else {
           console.log(localStorage.getItem("paymentdone"), ": payment done");
@@ -217,7 +230,7 @@ const Ticket = () => {
                   <option value="0">Select Ticket</option>
                   <option value="100">Standard</option>
                   <option value="150">Premium</option>
-                  <option value="200">Elite</option>
+                  <option value="250">Elite</option>
                 </select>
               </div>
             </div>
