@@ -5,6 +5,8 @@ import waveOr from "../assets/wave.png";
 import FForange from "../assets/FFora.png";
 import WebIllus from "../assets/Web_Illus_2.png";
 import { Link } from "react-router-dom";
+import { send } from "emailjs-com";
+import emailjs from "emailjs-com";
 
 const Ticket = () => {
   function handleTicketChange(event) {
@@ -102,6 +104,24 @@ const Ticket = () => {
           setphno("");
           localStorage.setItem("paymentdone", false);
           console.log(localStorage.getItem("paymentdone"));
+          // email
+
+          emailjs
+            .send(
+              "service_eg6yhc4",
+              "template_enbe1rw",
+              { name, ticket, quantity, uid, email },
+              "aU2UYRfNcfx9sv8Ws"
+            )
+            .then(
+              (response) => {
+                console.log("SUCCESS!", response);
+              },
+              (error) => {
+                console.log("FAILED...", error);
+              }
+            );
+          // email end
         } else {
           console.log(localStorage.getItem("paymentdone"), ": payment done");
           console.log("data not sent");
@@ -119,11 +139,12 @@ const Ticket = () => {
     paymentObject.open();
   };
 
+  const sendEmail = () => {};
   const handleSubmit = (e) => {
     e.preventDefault();
     const price = total;
     console.log(price);
-    displayRazorpay(1);
+    displayRazorpay(price);
   };
 
   return (

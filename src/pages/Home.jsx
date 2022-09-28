@@ -28,6 +28,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
+      <div className="second"></div>
     </>
   );
 };
