@@ -6,6 +6,7 @@ import FForange from "../assets/FFora.png";
 import WebIllus from "../assets/Web_Illus_2.png";
 import { Link } from "react-router-dom";
 import { send } from "emailjs-com";
+import { FcHighPriority } from "react-icons/fc";
 import emailjs from "emailjs-com";
 
 var ticket_name;
@@ -30,6 +31,8 @@ const Ticket = () => {
   const [email, setEmail] = useState("");
   const [phno, setphno] = useState("");
   const [ticket, setTicket] = useState("");
+  const [cllg, setcllg] = useState("");
+  const [course, setcourse] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [paymentid, setpaymentid] = useState();
 
@@ -94,6 +97,8 @@ const Ticket = () => {
           userdata["phone_number"] = phno;
           userdata["ticket"] = ticket;
           userdata["quantity"] = quantity;
+          userdata["college"] = cllg;
+          userdata["course"] = course;
           userdata["uid"] = uid;
           console.log(userdata);
 
@@ -157,7 +162,7 @@ const Ticket = () => {
     e.preventDefault();
     const price = total;
     console.log(price);
-    displayRazorpay(price);
+    displayRazorpay(1);
   };
 
   return (
@@ -226,11 +231,39 @@ const Ticket = () => {
                 <i className="fas fa-lock" />
               </div>
               <div className="div">
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="College"
+                  value={cllg}
+                  onChange={(e) => setcllg(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="input-div pass">
+              <div className="i">
+                <i className="fas fa-lock" />
+              </div>
+              <div className="div">
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Course"
+                  value={course}
+                  onChange={(e) => setcourse(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="input-div pass">
+              <div className="i">
+                <i className="fas fa-lock" />
+              </div>
+              <div className="div">
                 <select name="ticket" onChange={handleTicketChange}>
                   <option value="0">Select Ticket</option>
-                  <option value="100">Standard</option>
-                  <option value="150">Premium</option>
-                  <option value="250">Elite</option>
+                  <option value="100">Standard 100 INR</option>
+                  <option value="150">Premium 150 INR</option>
+                  <option value="250">Elite 250 INR</option>
                 </select>
               </div>
             </div>
@@ -249,7 +282,18 @@ const Ticket = () => {
                 />
               </div>
             </div>
-            <button type="submit" className="btn">
+            <div
+              style={{
+                textAlign: "start",
+                display: "flex",
+                alignItems: "center",
+                marginTop: "5px",
+              }}
+            >
+              <FcHighPriority style={{ marginRight: "3px" }} />
+              Note: Tickets are not refundable
+            </div>
+            <button type="submit" className="btn" disabled={!quantity}>
               BUY NOW
             </button>
           </form>
