@@ -162,7 +162,7 @@ const Ticket = () => {
     e.preventDefault();
     const price = total;
     console.log(price);
-    displayRazorpay(1);
+    displayRazorpay(price);
   };
 
   return (
@@ -195,6 +195,7 @@ const Ticket = () => {
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -209,6 +210,7 @@ const Ticket = () => {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -223,6 +225,7 @@ const Ticket = () => {
                   placeholder="Phone Number"
                   value={phno}
                   onChange={(e) => setphno(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -237,6 +240,7 @@ const Ticket = () => {
                   placeholder="College"
                   value={cllg}
                   onChange={(e) => setcllg(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -251,6 +255,7 @@ const Ticket = () => {
                   placeholder="Course"
                   value={course}
                   onChange={(e) => setcourse(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -279,6 +284,7 @@ const Ticket = () => {
                   type="number"
                   className="input"
                   placeholder="Quantity"
+                  required
                 />
               </div>
             </div>
