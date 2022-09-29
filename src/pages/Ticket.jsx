@@ -106,7 +106,7 @@ const Ticket = () => {
             .doc(name, uid)
             .set(userdata)
             .then(() => {
-              alert("Your message has been submitted👍");
+              // alert("Your message has been submitted👍");
               console.log(email);
             })
             .catch((error) => {
@@ -161,8 +161,13 @@ const Ticket = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const price = total;
+
     console.log(price);
-    displayRazorpay(price);
+    if (price < 1) {
+      alert("Bhai sahi se kar");
+    } else {
+      displayRazorpay(price);
+    }
   };
 
   return (
@@ -294,6 +299,8 @@ const Ticket = () => {
                 display: "flex",
                 alignItems: "center",
                 marginTop: "5px",
+                fontSize: "10px",
+                color: "grey",
               }}
             >
               <FcHighPriority style={{ marginRight: "3px" }} />
