@@ -303,8 +303,8 @@ const Ticket = () => {
                 textAlign: "start",
                 display: "flex",
                 alignItems: "center",
-                marginTop: "5px",
-                fontSize: "10px",
+                margin: "15px 0px",
+                fontSize: "14px",
                 color: "grey",
               }}
             >

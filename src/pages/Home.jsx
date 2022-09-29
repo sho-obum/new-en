@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BgVideo from "../assets/Video.mp4";
+// import BgVideo from "../assets/Video.mp4";
 import Blob from "../assets/blob.svg";
+import BgImg from "../assets/Main003.png";
 import enLogo from "../assets/logo.svg";
 import "../pages/Home.css";
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
     <>
       <div className="main">
         <div className="overlay"></div>
-        <video
+        {/* <video
           src={BgVideo}
           autoPlay
           muted
@@ -17,7 +18,8 @@ const Home = () => {
           playsinline="true"
           disablePictureInPicture="true"
           webkit-playsinline
-        ></video>
+        ></video> */}
+        <img src={BgImg} alt="" />
         <div className="content">
           <img className="enLogo" src={enLogo} alt="" />
           <p className="subhead">Presents</p>
