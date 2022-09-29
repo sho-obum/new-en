@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { send } from "emailjs-com";
 import { FcHighPriority } from "react-icons/fc";
 import emailjs from "emailjs-com";
+import Terms from "../pages/Terms";
 
 var ticket_name;
 const Ticket = () => {
@@ -164,7 +165,7 @@ const Ticket = () => {
 
     console.log(price);
     if (price < 1) {
-      alert("Bhai sahi se kar");
+      alert("Please make sure all fields are filled in correctly.");
     } else {
       displayRazorpay(price);
     }
@@ -269,7 +270,11 @@ const Ticket = () => {
                 <i className="fas fa-lock" />
               </div>
               <div className="div">
-                <select name="ticket" onChange={handleTicketChange}>
+                <select
+                  name="ticket"
+                  onChange={handleTicketChange}
+                  required={true}
+                >
                   <option value="0">Select Ticket</option>
                   <option value="100">Standard 100 INR</option>
                   <option value="150">Premium 150 INR</option>
@@ -304,7 +309,7 @@ const Ticket = () => {
               }}
             >
               <FcHighPriority style={{ marginRight: "3px" }} />
-              Note: Tickets are not refundable
+              <Terms />
             </div>
             <button type="submit" className="btn" disabled={!quantity}>
               BUY NOW
