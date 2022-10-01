@@ -34,17 +34,17 @@ const Ticket = () => {
   const [ticket, setTicket] = useState("");
   const [cllg, setcllg] = useState("");
   const [course, setcourse] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState("");
   const [paymentid, setpaymentid] = useState();
 
   let total = ticket * quantity;
   const cart = fs.collection("contacts");
-  console.log(name);
-  console.log(email);
-  console.log(phno);
-  console.log(ticket);
-  console.log(quantity);
-  console.log(paymentid);
+  // console.log(name);
+  // console.log(email);
+  // console.log(phno);
+  // console.log(ticket);
+  // console.log(quantity);
+  // console.log(paymentid);
 
   const loadScript = (src) => {
     return new Promise((resovle) => {
@@ -121,7 +121,7 @@ const Ticket = () => {
           setphno("");
           localStorage.setItem("paymentdone", false);
           console.log(localStorage.getItem("paymentdone"));
-
+          // frm.reset();
           // email
 
           emailjs
@@ -179,7 +179,7 @@ const Ticket = () => {
         <img src={WebIllus} className="img" />
 
         <div className="login-content">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="">
             <Link
               to={"/"}
               style={{
@@ -290,7 +290,9 @@ const Ticket = () => {
                 <input
                   min="0"
                   id=""
-                  onChange={handleQuantityChange}
+                  onChange={(e) => {
+                    setQuantity(e.target.value);
+                  }}
                   type="number"
                   className="input"
                   placeholder="Quantity"
