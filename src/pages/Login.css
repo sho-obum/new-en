@@ -33,9 +33,14 @@ body {
 .login-content {
   display: flex;
   flex-direction: column;
-  padding: 2em 2em;
-  background-color: #fafafa;
+
   /* width: 35vw; */
+}
+.logincontent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .login-title {
@@ -80,15 +85,12 @@ body {
 }
 
 .login-google {
-  /* color: #ffffff; */
-  /* background-color:#DB4437; */
   font-size: 16px;
   display: flex;
   align-items: center;
   border: white;
   background-color: white;
   cursor: pointer;
-  width: 70%;
   background: #ffffff;
   border: 2px solid #000000;
   border-radius: 25px;
@@ -152,11 +154,10 @@ body {
 
 .login-btn-login {
   color: #ffffff;
-  width: 70%;
   padding: 10px 0px;
   font-size: 20px;
-  background: #03c2c2;
-  border: 2px solid #03c2c2;
+  background: #e45826;
+  border: 2px solid #e45826;
   border-radius: 25px;
   display: flex;
   align-items: center;
@@ -170,12 +171,12 @@ body {
   color: #2c8f88;
   padding-left: 5px;
 }
-.login-tyc-wrapper{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-margin-top: 10px;
-/* justify-content: flex-start; */
+.login-tyc-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  /* justify-content: flex-start; */
 }
 .login-tyc {
   margin-top: 1.5em;
@@ -183,7 +184,6 @@ margin-top: 10px;
   color: #434343;
   cursor: pointer;
   /* margin-left: "2px"; */
-  
 }
 
 .login-link-tyc {
@@ -193,9 +193,9 @@ margin-top: 10px;
 }
 
 @media only screen and (max-width: 900px) {
-  .login-google,.login-btn-login{
+  .login-google,
+  .login-btn-login {
     font-size: 10px !important;
     /* border: 1px solid red; */
-    width: 50%;
   }
-}   
+}

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, fs } from "../config/config";
 import "./Login.css";
-
+import FForange from "../assets/FFora.png";
+import { Link } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [name, setname] = useState("");
@@ -30,90 +31,113 @@ const Login = () => {
       })
       .catch((error) => seterrmsg(error.message));
   };
+
+  const [Ftitle, setFTitle] = useState("Forgot Password?");
   return (
     <div className="logincontent">
-      <center>
-        <form className="login-form" onSubmit={handleSignup}>
-          <label className="signup-label">
-            <span>Name</span>
-            <input
-              type="text"
-              name="name"
-              className="login-miniform"
-              required
-              value={name}
-              onChange={(e) => setname(e.target.value)}
-            />
-          </label>
-          <label className="signup-label">
-            <span>Email Address</span>
-            <input
-              type="email"
-              name="mail"
-              className="login-miniform"
-              required
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
-            />
-          </label>
-          <label className="signup-label">
-            <span>Password</span>
-            <input
-              type="password"
-              name="Password"
-              className="login-miniform"
-              required
-              value={password}
-              onChange={(e) => setpassword(e.target.value)}
-            />
-          </label>
+      <form className="login-form" onSubmit={handleSignup}>
+        <Link
+          to={"/"}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img src={FForange} className="ffo" style={{ width: "100px" }} />
+        </Link>
+        <p
+          style={{
+            fontSize: "20px",
+            margin: "30px",
+            textDecoration: "underline",
+          }}
+        >
+          Admin Login
+        </p>
+        <label className="signup-label">
+          {/* <span>Name</span> */}
+          <input
+            type="text"
+            name="name"
+            className="login-miniform"
+            required
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setname(e.target.value)}
+          />
+        </label>
+        <label className="signup-label">
+          {/* <span>Email Address</span> */}
+          <input
+            type="email"
+            name="mail"
+            className="login-miniform"
+            required
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
+          />
+        </label>
+        <label className="signup-label">
+          {/* <span>Password</span> */}
+          <input
+            type="password"
+            name="Password"
+            placeholder="Password"
+            className="login-miniform"
+            required
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+          />
+        </label>
 
-          {success && (
-            <>
-              <div className="success-msg">
-                <center
-                  style={{
-                    // backgroundColor: "#7DCE13",
-                    margin: "auto",
-                    padding: "5px",
-                    borderRadius: "10px",
-                    color: "#7DCE13",
-                    fontWeight: "600",
-                  }}
-                >
-                  {success}
-                </center>
-              </div>
-            </>
-          )}
-          {errmsg && (
-            <>
-              <div
-                style={{
-                  // backgroundColor: "red",
-                  margin: "auto",
-                  padding: "5px",
-                  borderRadius: "10px",
-                  color: "red",
-                  fontWeight: "600s",
-                }}
-                className="success-msg"
-              >
-                <center>Please enter details carefully</center>
-              </div>
-            </>
-          )}
-          <center>
-            <div className="login-btn">
-              <center>
-                <button type="submit" className="login-btn-login">
-                  Login
-                </button>
-              </center>
+        {success && (
+          <>
+            <div className="success-msg">
+              style=
+              {{
+                // backgroundColor: "#7DCE13",
+                margin: "auto",
+                padding: "5px",
+                borderRadius: "10px",
+                color: "#7DCE13",
+                fontWeight: "600",
+              }}
+              {success}
             </div>
-          </center>
-        </form>
-      </center>
+          </>
+        )}
+        {errmsg && (
+          <>
+            <div
+              style={{
+                // backgroundColor: "red",
+                margin: "auto",
+                padding: "5px",
+                borderRadius: "10px",
+                color: "red",
+                fontWeight: "600s",
+              }}
+              className="success-msg"
+            >
+              Please enter details carefully
+            </div>
+          </>
+        )}
+
+        <div className="login-btn">
+          <button type="submit" className="login-btn-login">
+            Login
+          </button>
+          <p
+            style={{ textAlign: "start", marginTop: "5px" }}
+            className="forgot"
+            onClick={() => setFTitle("Contact Shubham 9540028204")}
+          >
+            {Ftitle}
+          </p>
+        </div>
+      </form>
     </div>
   );
 };

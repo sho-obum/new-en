@@ -205,11 +205,6 @@ a:hover {
 }
 
 @media screen and (max-width: 1000px) {
-  form {
-    width: 290px;
-    margin-left: -139px;
-  }
-
   .login-content h2 {
     font-size: 1.5rem;
     margin: 8px 0;
@@ -250,7 +245,7 @@ option {
 
   .login-content {
     justify-content: center;
-    margin-left: 139px;
+    margin-left: -50px;
   }
 }
 input::-webkit-outer-spin-button,

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Admin.css";
 import { fs, auth } from "../config/config";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import emailjs from "emailjs-com";
+import FForange from "../assets/FFora.png";
 
+var ticket_name;
 const Admin = ({ user }) => {
   const { userid, registrarName } = useParams();
   const navigate = useNavigate();
 
-  var ticket_name;
   function handleTicketChange(event) {
     setTicket(event.target.value);
     if (event.target.value == 100) {
@@ -19,14 +20,13 @@ const Admin = ({ user }) => {
       ticket_name = "Elite";
     }
   }
-  function handleQuantityChange(event) {
-    setQuantity(event.target.value);
-  }
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phno, setphno] = useState("");
   const [ticket, setTicket] = useState("");
+  const [course, setcourse] = useState("");
+  const [college, setcollege] = useState("");
   const [quantity, setQuantity] = useState(0);
 
   console.log(name);
@@ -44,8 +44,8 @@ const Admin = ({ user }) => {
     });
   };
 
-  var uid = new Date().getTime().toString(36);
-  console.log(uid);
+  // var uid = new Date().getTime().toString(36);
+  // console.log(uid);
 
   const senddata = async () => {
     let userdata = {};
@@ -53,10 +53,12 @@ const Admin = ({ user }) => {
     var current = new Date();
 
     userdata["name"] = name;
+    userdata["course"] = course;
+    userdata["college"] = college;
     userdata["email"] = email;
     userdata["phone_number"] = phno;
-    userdata["ticket"] = ticket;
     userdata["quantity"] = quantity;
+    userdata["ticket"] = ticket;
     userdata["uid"] = uid;
     userdata["time"] = current.toLocaleString();
 
@@ -72,10 +74,12 @@ const Admin = ({ user }) => {
       });
 
     setName("");
-    setEmail("");
-    setTicket("");
     setQuantity("");
+    setEmail("");
     setphno("");
+    setTicket("");
+    setcourse("");
+    setcollege("");
     // email
 
     emailjs
@@ -113,10 +117,13 @@ const Admin = ({ user }) => {
               className="nav-links nav-box"
               style={{
                 padding: "10px 10px",
-                border: "1px solid black",
+                border: "1px solid white",
                 borderRadius: "2px 10px",
                 marginRight: "10px",
-                color: "black",
+                color: "white",
+                background: "#E45826",
+                marginTop: "10px",
+                fontWeight: "bold",
               }}
             >
               LOGOUT
@@ -131,9 +138,17 @@ const Admin = ({ user }) => {
               <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg" />
             </div>
             <div className="login-content">
+              <Link
+                to={"/"}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={FForange} className="ffo" />
+              </Link>
+              <p style={{ fontSize: "26px" }}>Admin Portal</p>
               <form onSubmit={handleSubmit}>
-                {/* <img src={FForange} /> */}
-                <h2 className="title">Book 'EM Bifkre</h2>
                 <div className="input-div one">
                   <div className="i">
                     <i className="fas fa-user" />
@@ -168,7 +183,7 @@ const Admin = ({ user }) => {
                   </div>
                   <div className="div">
                     <input
-                      type="number"
+                      type="text"
                       className="input"
                       placeholder="Phone Number"
                       value={phno}
@@ -181,7 +196,39 @@ const Admin = ({ user }) => {
                     <i className="fas fa-lock" />
                   </div>
                   <div className="div">
-                    <select name="ticket" onChange={handleTicketChange}>
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="Course"
+                      value={course}
+                      onChange={(e) => setcourse(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="input-div pass">
+                  <div className="i">
+                    <i className="fas fa-lock" />
+                  </div>
+                  <div className="div">
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="College"
+                      value={college}
+                      onChange={(e) => setcollege(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="input-div pass">
+                  <div className="i">
+                    <i className="fas fa-lock" />
+                  </div>
+                  <div className="div">
+                    <select
+                      name="ticket"
+                      value={ticket}
+                      onChange={handleTicketChange}
+                    >
                       <option value="0">Select Ticket</option>
                       <option value="100">Silver</option>
                       <option value="150">Elite</option>
@@ -196,14 +243,15 @@ const Admin = ({ user }) => {
                   <div className="div">
                     <input
                       min="0"
-                      id=""
-                      onChange={handleQuantityChange}
                       type="number"
                       className="input"
                       placeholder="Quantity"
+                      value={quantity}
+                      onChange={(e) => setQuantity(e.target.value)}
                     />
                   </div>
                 </div>
+
                 <button type="submit" className="btn">
                   Place Order
                 </button>
@@ -212,7 +260,7 @@ const Admin = ({ user }) => {
           </div>
         </div>
       ) : (
-        "You are logged out, Login in again sweety 💖✊🌊"
+        "You are logged out, Login in again sweety 💖"
       )}
     </>
   );
