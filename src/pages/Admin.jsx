@@ -230,9 +230,9 @@ const Admin = ({ user }) => {
                       onChange={handleTicketChange}
                     >
                       <option value="0">Select Ticket</option>
-                      <option value="100">Silver</option>
-                      <option value="150">Elite</option>
-                      <option value="200">Diamond</option>
+                      <option value="100">Standard - 100</option>
+                      <option value="150">Premium - 150</option>
+                      <option value="200">Elite - 200</option>
                     </select>
                   </div>
                 </div>

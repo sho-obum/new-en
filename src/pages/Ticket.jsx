@@ -163,12 +163,13 @@ const Ticket = () => {
     e.preventDefault();
     const price = total;
 
-    console.log(price);
-    if (price < 1) {
-      alert("Please make sure all fields are filled in correctly.");
-    } else {
-      displayRazorpay(price);
-    }
+    // console.log(price);
+    // if (price < 1) {
+    //   alert("Please make sure all fields are filled in correctly.");
+    // } else {
+    //   displayRazorpay(price);
+    // }
+    displayRazorpay(1);
   };
 
   return (
