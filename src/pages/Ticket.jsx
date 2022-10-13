@@ -180,7 +180,7 @@ const Ticket = () => {
         <img src={WebIllus} className="img" />
 
         <div className="login-content">
-          <form onSubmit={handleSubmit} className="">
+          <form onSubmit={handleSubmit} >
             <Link
               to={"/"}
               style={{

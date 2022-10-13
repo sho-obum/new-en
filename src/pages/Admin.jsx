@@ -84,10 +84,10 @@ const Admin = ({ user }) => {
 
     emailjs
       .send(
-        "service_eg6yhc4",
-        "template_enbe1rw",
+        "service_jlhqvad",
+        "template_506l4nb",
         { name, ticket_name, quantity, uid, email },
-        "aU2UYRfNcfx9sv8Ws"
+        "v4MzDnFv054ANS0G3"
       )
       .then(
         (response) => {
