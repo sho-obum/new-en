@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+## Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### The Enactus Fall Fest Ticket System is a ticket booking portal developed for the annual Autumn carnival. The system is designed to manage ticket sales efficiently and provide a seamless experience for users. It utilizes Firebase for database storage, Razorpay for secure payment processing, and EmailJS for sending payment confirmation emails.
 
-## Available Scripts
+![Enactus Fall Fest Banner](./assets/en%20banner.png)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ⚙️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Firebase**: Used for real-time database storage and user authentication.
+- **Razorpay**: Integrated for secure and reliable payment processing.
+- **EmailJS**: Used to send payment confirmation emails to users.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🔋 Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Secure Payment Integration**: Razorpay integration for secure and smooth transactions.
+- **Real-time Database**: Firebase is used to store user and ticket information in real-time.
+- **Automated Email Confirmation**: Payment confirmations are automatically sent to users via EmailJS.
+- **User Authentication**: Firebase authentication for secure user login and registration.
+- **Responsive Design**: Optimized for both desktop and mobile devices to ensure a smooth user experience.
+- **Ticket Management**: Users can easily select and purchase tickets for the Autumn carnival.
+- **Order History**: Users can view their past orders and transaction history.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ TODO
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Refund Process**: Implement a system to handle ticket cancellations and refunds through Razorpay.
+- **Enhanced Security**: Improve security measures around payment processing and user data storage.
+- **Analytics Dashboard**: Create a dashboard to monitor ticket sales and user engagement.
+- **Email Customization**: Enhance email templates for a more personalized user experience.
+- **Fix Razorpay Integration**: Update the Razorpay integration to handle different payment scenarios and errors gracefully.
+- **Improve UI/UX**: Revamp the user interface for a more intuitive ticket booking process.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To get started with the Enactus Fall Fest Ticket System, clone the repository and install the necessary dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/yourusername/enactus-fall-fest.git
+cd enactus-fall-fest
+npm install
