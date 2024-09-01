@@ -24,16 +24,6 @@
 - **Ticket Management**: Users can easily select and purchase tickets for the Autumn carnival.
 - **Order History**: Users can view their past orders and transaction history.
 
----
-
-## 🛠️ TODO
-
-- **Refund Process**: Implement a system to handle ticket cancellations and refunds through Razorpay.
-- **Enhanced Security**: Improve security measures around payment processing and user data storage.
-- **Analytics Dashboard**: Create a dashboard to monitor ticket sales and user engagement.
-- **Email Customization**: Enhance email templates for a more personalized user experience.
-- **Fix Razorpay Integration**: Update the Razorpay integration to handle different payment scenarios and errors gracefully.
-- **Improve UI/UX**: Revamp the user interface for a more intuitive ticket booking process.
 
 ---
 
