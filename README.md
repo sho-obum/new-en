@@ -2,7 +2,7 @@
 
 #### The Enactus Fall Fest Ticket System is a ticket booking portal developed for the annual Autumn carnival. The system is designed to manage ticket sales efficiently and provide a seamless experience for users. It utilizes Firebase for database storage, Razorpay for secure payment processing, and EmailJS for sending payment confirmation emails.
 
-![Enactus Fall Fest Banner](./assets/en%20banner.png)
+![Enactus Fall Fest Banner](./assets/banner.png)
 
 ---
 
